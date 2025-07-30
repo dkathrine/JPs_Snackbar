@@ -6,11 +6,13 @@ class GradientButton extends StatelessWidget {
     required this.isPurple,
     required this.label,
     this.onTap,
+    this.widthPadding = 26,
   });
 
   final bool isPurple;
   final String label;
   final VoidCallback? onTap;
+  final double widthPadding;
 
   final Gradient pinkGradient = RadialGradient(
     colors: [Color(0xFFF69EA3), Color(0xFFE970C4)],
@@ -72,7 +74,12 @@ class GradientButton extends StatelessWidget {
             children: [
               Container(
                 /* 26, 14, 26, 14 */
-                padding: EdgeInsets.fromLTRB(26, 14, 26, 14),
+                padding: EdgeInsets.fromLTRB(
+                  widthPadding,
+                  14,
+                  widthPadding,
+                  14,
+                ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   gradient: isPurple ? purpleGradient : pinkGradient,
