@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class GradientButton extends StatelessWidget {
   GradientButton({
@@ -7,12 +8,16 @@ class GradientButton extends StatelessWidget {
     required this.label,
     this.onTap,
     this.widthPadding = 26,
+    this.heightPadding = 14,
+    this.fontSize = 17,
   });
 
   final bool isPurple;
   final String label;
   final VoidCallback? onTap;
   final double widthPadding;
+  final double heightPadding;
+  final double fontSize;
 
   final Gradient pinkGradient = RadialGradient(
     colors: [Color(0xFFF69EA3), Color(0xFFE970C4)],
@@ -76,9 +81,9 @@ class GradientButton extends StatelessWidget {
                 /* 26, 14, 26, 14 */
                 padding: EdgeInsets.fromLTRB(
                   widthPadding,
-                  14,
+                  heightPadding,
                   widthPadding,
-                  14,
+                  heightPadding,
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
@@ -86,10 +91,10 @@ class GradientButton extends StatelessWidget {
                 ),
                 child: Text(
                   label,
-                  style: TextStyle(
+                  style: GoogleFonts.inter(
                     color: Colors.white,
                     fontWeight: FontWeight.w600,
-                    fontSize: 17,
+                    fontSize: fontSize,
                   ),
                 ),
               ),
