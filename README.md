@@ -1,3 +1,5 @@
-# jps_snackbar
+# JP's Snackish
 
-A new Flutter project.
+## Demo
+
+![Snackish Demo](assets/demo.gif)
