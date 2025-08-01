@@ -2,6 +2,8 @@ import 'dart:ui';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/material.dart';
 import 'package:jps_snackbar/src/common/gradient_button.dart';
+import 'package:jps_snackbar/src/features/HomeScreen/presentation/home_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class StartScreen extends StatelessWidget {
   const StartScreen({super.key});
@@ -52,7 +54,7 @@ class StartScreen extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(30),
             child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 30, sigmaY: 30),
+              filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.86,
                 padding: EdgeInsets.all(30),
@@ -73,18 +75,18 @@ class StartScreen extends StatelessWidget {
                         Text(
                           'Feeling Snackish Today?',
                           textAlign: TextAlign.center,
-                          style: TextStyle(
+                          style: GoogleFonts.inter(
                             color: Colors.white,
                             fontWeight: FontWeight.w900,
                             fontSize: /* 22 */
-                                MediaQuery.of(context).size.width * 0.06,
+                                MediaQuery.of(context).size.width * 0.055,
                             letterSpacing: 0.35,
                           ),
                         ),
                         Text(
                           "Explore Angi's most popular snack selection and get instantly happy.",
                           textAlign: TextAlign.center,
-                          style: TextStyle(
+                          style: GoogleFonts.roboto(
                             color: Color.fromRGBO(235, 235, 245, 0.6),
                             fontSize: /* 13 */
                                 MediaQuery.of(context).size.width * 0.032,
@@ -98,6 +100,14 @@ class StartScreen extends StatelessWidget {
                       widthPadding: 52,
                       isPurple: false,
                       label: 'Order Now',
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) {
+                            return Scaffold(body: HomeScreen());
+                          },
+                        ),
+                      ),
                     ),
                   ],
                 ),
