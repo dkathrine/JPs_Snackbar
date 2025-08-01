@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:jps_snackbar/src/common/glassy_chip.dart';
 import 'package:jps_snackbar/src/common/gradient_button.dart';
 import 'package:jps_snackbar/src/data/jp_icons_icons.dart';
+import 'package:jps_snackbar/src/common/snackish_cards.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -14,6 +15,31 @@ class HomeScreen extends StatelessWidget {
     'Salty',
     'Sweet',
     'Drinks',
+  ];
+
+  final List<Map<String, dynamic>> snacks = [
+    {
+      'snackImage': 'assets/grafiken/cupkake_cat.png',
+      'snackName': "Mogli's Cup",
+      'snackDesc': 'Strawberry ice cream',
+    },
+    {
+      'snackImage': 'assets/grafiken/icecream.png',
+      'snackName': "Balu's Cup",
+      'snackDesc': 'Pistachio ice cream',
+    },
+    {
+      'snackImage': 'assets/grafiken/icecream_stick.png',
+      'snackName': "Smiling David",
+      'snackDesc': 'Coffee ice cream',
+      'snackPrice': '3.99',
+    },
+    {
+      'snackImage': 'assets/grafiken/icecream_cone.png',
+      'snackName': "Kai in a Cone",
+      'snackDesc': 'Vanilla ice cream',
+      'snackPrice': '3.99',
+    },
   ];
 
   @override
@@ -89,7 +115,11 @@ class HomeScreen extends StatelessWidget {
                   elevation: 0,
                   clipBehavior: Clip.antiAlias,
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(30),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30),
+                      bottomLeft: Radius.circular(33),
+                    ),
                     child: BackdropFilter(
                       filter: ImageFilter.blur(sigmaX: 30, sigmaY: 30),
                       child: Container(
@@ -222,6 +252,56 @@ class HomeScreen extends StatelessWidget {
                 ),
               ],
             ),
+            Spacer(),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              spacing: 10,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 0.05,
+                  ),
+                  child: Text(
+                    'We Recommend',
+                    style: GoogleFonts.inter(
+                      color: Colors.white,
+                      fontSize: MediaQuery.of(context).size.width * 0.04,
+                      fontWeight: FontWeight.w900,
+                      letterSpacing: 0.35,
+                    ),
+                  ),
+                ),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  physics: BouncingScrollPhysics(),
+                  padding: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 0.05,
+                  ),
+                  child: Row(
+                    spacing: 24,
+                    children: [
+                      ...snacks.map((snack) {
+                        if (snack['snackPrice'] != null) {
+                          return SnackishCards(
+                            snackImage: AssetImage(snack['snackImage']),
+                            snackName: snack['snackName'],
+                            snackDesc: snack['snackDesc'],
+                            snackPrice: snack['snackPrice'],
+                          );
+                        } else {
+                          return SnackishCards(
+                            snackImage: AssetImage(snack['snackImage']),
+                            snackName: snack['snackName'],
+                            snackDesc: snack['snackDesc'],
+                          );
+                        }
+                      }),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 38),
           ],
         ),
       ],
@@ -264,4 +344,10 @@ MediaQuery.of(context).size.width * 0.0347
 
 //15px
 MediaQuery.of(context).size.width * 0.04
+
+//17px
+MediaQuery.of(context).size.width * 0.0433
+
+// 22px
+MediaQuery.of(context).size.width * 0.056
 */
